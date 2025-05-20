@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    #map {
+      height: 400px; /* Set the height of the map */
+      width: 100%;   /* Set the width of the map */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome to the Home Page!</h2>
+
+    <div class="button-container">
+      <a href="login.html" class="button">Login</a>
+      <a href="signup.html" class="button">Sign Up</a>
+      <button id="donate-now" class="button">Find Blood Packets</button>
+    </div>
+
+    <div class="blood-count-container">
+      <h3>Blood Donation and Transfusion Counts:</h3>
+      <p>Total Blood Donations: 5000</p>
+      <p>Total Blood Transfusions: 3000</p>
+    </div>
+    
+    <div class="blood-group-filter">
+      <label for="blood-group">Select Blood Group:</label>
+      <select id="blood-group">
+        <option value="">All</option>
+        <option value="A+">A+</option>
+        <option value="B+">B+</option>
+        <option value="O+">O+</option>
+        <option value="AB+">AB+</option>
+        <option value="A-">A-</option>
+        <option value="B-">B-</option>
+        <option value="O-">O-</option>
+        <option value="AB-">AB-</option>
+      </select>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+  </div>
+
+  <script src="hospital-finder.js"></script>
+  <script>
+    // Initialize the map
+    const map = L.map('map').setView([51.505, -0.09], 13); // Default view
+  
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  
+    // Use Geolocation API to get current position
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+  
+        // Update map view to user's location
+        map.setView([lat, lon], 13);
+  
+        // Add a marker for the user's location
+        L.marker([lat, lon]).addTo(map)
+          .bindPopup('You are here!')
+          .openPopup();
+      }, () => {
+        alert('Unable to retrieve your location.');
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
+  </script>
+  
+
+  <div class="hospital-results">
+    <h3>Nearby Hospitals:</h3>
+    <li id="hospital-list"></li>
+  </div>
+</body>
+</html>

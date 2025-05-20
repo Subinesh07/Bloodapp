@@ -1,0 +1,126 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(163, 76, 76);
+  
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  justify-content: center;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 50px;
+    padding-right: 50px;
+}
+.button, #donate-now {
+  display: inline-block;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  background-color: #ff4d4d;
+  cursor: pointer;
+  width: 100%;
+}
+
+.blood-group-filter {
+  margin-top: 20px;
+}
+
+.hospital-results {
+  margin-top: 20px;
+}
+
+#hospital-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#hospital-list li {
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.hospital-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.hospital-row span {
+  flex: 1;
+  text-align: left;
+}
+
+.hospital-row span:nth-child(2) {
+  text-align: center;
+}
+
+.hospital-row span:nth-child(3) {
+  text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+      width: 90%;
+      padding: 15px;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .container {
+      width: 50%;
+  }
+}
+.hospital-results {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  background-color: #f9f9f9;
+}
+
+.hospital-results h3 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+#hospital-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#hospital-list li {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#hospital-list li strong {
+  color: #333;
+}
